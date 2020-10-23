@@ -20,7 +20,11 @@ module.exports = {
                 return;
             }
 
-            const { stdout } = shell.exec(`git rev-parse --abbrev-ref HEAD`);
+            const { stdout, stderr, code } = shell.exec(`git rev-parse --abbrev-ref HEAD`);
+
+            console.log(`Error: ${red.bold.bold(stdout)}`);
+            console.log(`Error: ${red.bold.bold(stderr)}`);
+            console.log(`Error: ${red.bold.bold(code)}`);
 
             if (shell.exec(`git push --set-upstream origin ${stdout}`).code !== 0) {
                 showError(`git push --set-upstream origin $branch`);
