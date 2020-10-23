@@ -10,13 +10,19 @@ function showError(error) {
 module.exports = {
     gitPush: async (platforms = '') => {
         if (shell.which('git')) {
-            
+
             if (shell.exec('git add -A').code !== 0) {
                 showError('git Add -A');
                 return;
             }
 
-            const data = await inquirer.prompt([{ name: 'commit', type: 'input', message: 'Input your message commit: ' }]);
+            const data = await inquirer.prompt([{
+                name: 'commit', type: 'input', message: 'Input your message commit: ', validate: async (input) => {
+                    if (!input)
+                        return 'Message Is Required';
+                    return true;
+                }
+            }]);
             if (shell.exec(`git commit -m "${platforms} ${data.commit}"`).code !== 0) {
                 showError(`git commit -m "${platforms} ${data.commit}"`);
                 return;
@@ -24,7 +30,6 @@ module.exports = {
 
             const { stdout } = shell.exec(`git rev-parse --abbrev-ref HEAD`);
 
-            console.log(`Error: ${red.bold.bold(stdout)}`);
 
             if (shell.exec(`git push --set-upstream origin ${stdout}`).code !== 0) {
                 showError(`git push --set-upstream origin $branch`);
@@ -33,7 +38,7 @@ module.exports = {
 
             console.log(`\n`);
 
-            console.log(`------ Your Changes Is Remote Branch ${blue.bold(stdout)}------\n`);
+            console.log(`------ Your Changes Is Remote Branch ${blue.bold(stdout)} ------`);
 
         }
     }
