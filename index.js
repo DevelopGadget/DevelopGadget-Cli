@@ -16,9 +16,15 @@ const msn = (msn) => {
         )
     );
 };
+
+console.log(`\n`);
+
 msn('DG-CLI');
 
+console.log(`\n`);
+
 program.option('-g, --git');
+program.option('-m, --multiple');
 program.option('-t, --template');
 program.version('1.0.0');
 

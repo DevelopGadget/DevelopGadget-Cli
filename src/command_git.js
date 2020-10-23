@@ -23,13 +23,15 @@ module.exports = {
                     return true;
                 }
             }]);
+
+            console.log(`\n`);
+
             if (shell.exec(`git commit -m "${platforms} ${data.commit}"`).code !== 0) {
                 showError(`git commit -m "${platforms} ${data.commit}"`);
                 return;
             }
 
             const { stdout } = shell.exec(`git rev-parse --abbrev-ref HEAD`);
-
 
             if (shell.exec(`git push --set-upstream origin ${stdout}`).code !== 0) {
                 showError(`git push --set-upstream origin $branch`);
@@ -38,8 +40,10 @@ module.exports = {
 
             console.log(`\n`);
 
-            console.log(`------ Your Changes Is Remote Branch ${blue.bold(stdout)} ------`);
+            console.log(`Your Changes Is Remote Branch: ${blue.bold(stdout)}`);
 
         }
+
+        showError('Please Install Git');
     }
 }
