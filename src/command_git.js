@@ -8,6 +8,36 @@ function showError(error) {
 }
 
 module.exports = {
+
+    gitShowMultiple: () => {
+        return inquirer.prompt([{
+            name: 'projects', type: 'checkbox',
+            message: 'Select Your Push Projects: ',
+            choices: [
+                {
+                    name: 'Plataforma', checked: true, value: '[PL]'
+                },
+                {
+                    name: 'Terceros', value: '[TC]'
+                },
+                {
+                    name: 'Tienda', value: '[TD]'
+                },
+                {
+                    name: 'Comercial', value: '[CM]'
+                },
+                {
+                    name: 'Visor Public', value: '[PV]'
+                }
+            ],
+            validate: async (input) => {
+                if (input.length < 1)
+                    return 'Select Project Is Required';
+                return true;
+            }
+        }]);
+    },
+
     gitPush: async (platforms = '') => {
         if (shell.which('git')) {
 
@@ -41,7 +71,7 @@ module.exports = {
             console.log(`\n`);
 
             console.log(`Your Changes Is Remote Branch: ${blue.bold(stdout)}`);
-            
+
             return;
         }
 

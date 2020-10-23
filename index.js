@@ -3,7 +3,7 @@
 const { bold } = require('chalk');
 const { textSync } = require('figlet');
 const { program } = require('commander');
-const { gitPush } = require('./src/command_git');
+const { gitPush, gitShowMultiple } = require('./src/command_git');
 // Mostrar un banner con un mensaje formado por caracteres.
 const msn = (msn) => {
     console.log(
@@ -30,4 +30,9 @@ program.version('1.0.0');
 
 program.parse(process.argv);
 
-if (program.git) gitPush();
+async function init() {
+    if (program.git && !program.multiple) gitPush();
+    if (program.git && program.multiple) gitPush((await gitShowMultiple()).projects.join(' '));
+}
+
+init();
