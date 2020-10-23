@@ -1,6 +1,6 @@
 {
   "name": "@developgadget/cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "this cli is for download and git projects",
   "main": "index.js",
   "repository": {

@@ -27,7 +27,7 @@ module.exports = {
                     name: 'Comercial', value: '[CM]'
                 },
                 {
-                    name: 'Visor Public', value: '[PV]'
+                    name: 'Visor Publico', value: '[PV]'
                 }
             ],
             validate: async (input) => {
