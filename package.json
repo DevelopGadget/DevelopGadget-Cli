@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DevelopGadget/DevelopGadget-Cli.git"
+    "url": "git+https://github.com/DevelopGadget/cli.git"
   },
   "keywords": [
     "cli",
@@ -18,9 +18,9 @@
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DevelopGadget/DevelopGadget-Cli/issues"
+    "url": "https://github.com/DevelopGadget/cli/issues"
   },
-  "homepage": "https://github.com/DevelopGadget/DevelopGadget-Cli#readme",
+  "homepage": "https://github.com/DevelopGadget/cli#readme",
   "dependencies": {
     "chalk": "^4.1.0",
     "commander": "^6.1.0",
