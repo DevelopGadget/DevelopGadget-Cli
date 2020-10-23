@@ -41,7 +41,8 @@ module.exports = {
             console.log(`\n`);
 
             console.log(`Your Changes Is Remote Branch: ${blue.bold(stdout)}`);
-
+            
+            return;
         }
 
         showError('Please Install Git');
